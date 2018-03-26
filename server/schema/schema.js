@@ -64,8 +64,29 @@ const rootQuery = new GraphQLObjectType ({
     }
 });
 
+const mutation = new GraphQLObjectType({
+    name: 'Mutation',
+    fields:{
+        addBook: {
+            type: bookType,
+            args: {
+                name: {type: GraphQLString},
+                genre: {type: GraphQLString}
+            },
+            resolve(parent,args) {
+                return axios.post('http://localhost:3000/books', {
+                    name: args.name,
+                    genre: args.genre
+                })
+                .then(res => res.data);
+            }
+        }
+    }
+})
+
 module.exports = new GraphQLSchema({
-    query: rootQuery 
+    query: rootQuery,
+    mutation
 });
  
 
