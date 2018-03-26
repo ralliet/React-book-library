@@ -39,25 +39,25 @@ const rootQuery = new GraphQLObjectType ({
             type: bookType,
             args: { id: { type: GraphQLID }},
             resolve(parent,args) {
-                
-
-
-
-                return _.find(books,{ id:args.id });
+                return axios.get('http://localhost:3000/books/'+ args.id)
+                .then(res => res.data);
+                //return _.find(books,{ id:args.id });
             }
         },
         books: {
             type: new GraphQLList(bookType),
             args: { genre: { type: GraphQLString }},
             resolve(parent,args) {
-                return _.find(books,{ genre:args.genre });
+                return axios.get('http://localhost:3000/books/')
+                            .then(res => res.data);
             }
         },
         author: {
             type: authorType,
             args: { id: { type: GraphQLID }},
             resolve(parent,args) {
-                return _.find(authors, { id:args.id })
+                return axios.get('http://localhost:3000/author/' + args.id)
+                            .then(res => res.data);
             }
         }
         

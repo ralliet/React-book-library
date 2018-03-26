@@ -15,5 +15,22 @@
             "name": "return of the king",
             "genre": "Fantasy"
         }
+    ],
+    "author": [
+        {
+            "id": "1",
+            "name": "Patrick",
+            "age": 44
+        },
+        {
+            "id": "2",
+            "name": "Dirk",
+            "age": 64
+        },
+        {
+            "id": "3",
+            "name": "Molly",
+            "age": 48
+        }
     ]
 }
