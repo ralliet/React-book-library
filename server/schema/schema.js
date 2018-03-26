@@ -1,15 +1,15 @@
 const graphql = require("graphql");
 const _ = require("lodash");
+const axios = require("axios");
 
 const { 
     GraphQLObjectType,
     GraphQLString,
     GraphQLSchema,
     GraphQLID,
-    GraphQLInt
+    GraphQLInt,
+    GraphQLList
 } = graphql;
-
-
 
 
 //define our schema
@@ -39,7 +39,18 @@ const rootQuery = new GraphQLObjectType ({
             type: bookType,
             args: { id: { type: GraphQLID }},
             resolve(parent,args) {
+                
+
+
+
                 return _.find(books,{ id:args.id });
+            }
+        },
+        books: {
+            type: new GraphQLList(bookType),
+            args: { genre: { type: GraphQLString }},
+            resolve(parent,args) {
+                return _.find(books,{ genre:args.genre });
             }
         },
         author: {
@@ -49,6 +60,7 @@ const rootQuery = new GraphQLObjectType ({
                 return _.find(authors, { id:args.id })
             }
         }
+        
     }
 });
 
