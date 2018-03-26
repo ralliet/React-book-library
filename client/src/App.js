@@ -1,19 +1,21 @@
+//REACT
 import React, {Component} from 'react'
-import {ApolloClient, ApolloProvider, createBatchingNetworkInterface} from 'react-apollo'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+//APOLLO
+import ApolloClient from 'apollo-client';
+import { HttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory'
+import { ApolloProvider } from 'react-apollo';
+//VIEWS
 import HomeView from './views/HomeView'
 import CreateView from './views/CreateView'
 import DetailView from './views/DetailView'
 
-const networkInterface = createBatchingNetworkInterface({
-  uri: 'http://localhost:4000/graphql/',
-  batchInterval: 10,
-  opts: {
-    credentials: 'same-origin'
-  }
-})
 
-const client = new ApolloClient({networkInterface: networkInterface})
+const client = new ApolloClient({
+  link: new HttpLink({ uri: 'http://localhost:4000/graphql' }),
+  cache: new InMemoryCache().restore(window.__APOLLO_STATE__)
+});
 
 class App extends Component {
   render() {
