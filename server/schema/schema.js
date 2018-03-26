@@ -91,6 +91,18 @@ const mutation = new GraphQLObjectType({
                 return axios.delete('http://localhost:3000/books/' + args.id)
                 .then(res => res.data);
             }
+        },
+        updateBook: {
+            type: bookType,
+            args: {
+                id: {type: new GraphQLNonNull(GraphQLID)},
+                name: {type: GraphQLString },
+                genre: {type: GraphQLString }
+            },
+            resolve(parent,args) {
+                return axios.patch('http://localhost:3000/books/' + args.id, args)
+                .then(res => res.data);
+            }
         }
     }
 })
