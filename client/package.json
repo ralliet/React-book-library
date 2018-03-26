@@ -1,0 +1,14 @@
+{
+  "name": "bookappclientside",
+  "version": "1.0.0",
+  "description": "react & apollo interacting with graphql",
+  "main": "app.js",
+  "scripts": {
+    "test": "nodemon app.js"
+  },
+  "author": "ruben alliet",
+  "license": "ISC",
+  "dependencies": {
+    "apollo": "^0.2.2"
+  }
+}
