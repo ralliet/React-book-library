@@ -8,7 +8,8 @@ const {
     GraphQLSchema,
     GraphQLID,
     GraphQLInt,
-    GraphQLList
+    GraphQLList,
+    GraphQLNonNull
 } = graphql;
 
 
@@ -78,6 +79,16 @@ const mutation = new GraphQLObjectType({
                     name: args.name,
                     genre: args.genre
                 })
+                .then(res => res.data);
+            }
+        },
+        deleteBook: {
+            type: bookType,
+            args: {
+                id: {type: new GraphQLNonNull(GraphQLID)}
+            },
+            resolve(parent,args) {
+                return axios.delete('http://localhost:3000/books/' + args.id)
                 .then(res => res.data);
             }
         }
