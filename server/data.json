@@ -1,0 +1,19 @@
+{
+    "books": [
+        {
+            "id": "1",
+            "name": "name of the wind",
+            "genre": "Fantasy"
+        },
+        {
+            "id": "2",
+            "name": "The final empire",
+            "genre": "Fantasy"
+        },
+        {
+            "id": "3",
+            "name": "return of the king",
+            "genre": "Fantasy"
+        }
+    ]
+}

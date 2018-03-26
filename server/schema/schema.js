@@ -10,17 +10,7 @@ const {
 } = graphql;
 
 
-let books = [
-    {name:"name of the wind",genre:"Fantasy",id:"1"},
-    {name:"The final empire",genre:"Fantasy",id:"2"},
-    {name:"The long earth",genre:"Sci-fi",id:"3"},
-];
 
-let authors = [
-    {name:"Patrick",age:44,id:"1"},
-    {name:"Brandon",age:40,id:"2"},
-    {name:"Terry",age:60,id:"3"},
-]
 
 //define our schema
 //the data of the graph(relationships,queries,mutations)
@@ -38,7 +28,7 @@ const authorType = new GraphQLObjectType ({
     fields: () => ({
         id: { type: GraphQLID },
         name: { type: GraphQLString },
-        age: { type: GraphQLInt }    
+        age: { type: GraphQLInt }
     })
 });
 
