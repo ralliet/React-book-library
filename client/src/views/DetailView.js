@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import {gql, graphql} from 'react-apollo';
 
 const query = gql `
@@ -7,6 +6,7 @@ const query = gql `
         book(id: $id) {
           id
           name
+          genre
         }
       }
       `;
@@ -19,6 +19,8 @@ class DetailView extends React.Component {
         return (
             <div>
                 <p>{data.book.name}</p>
+                <p>{data.book.genre}</p>
+
             </div>
         )
     }
@@ -27,11 +29,11 @@ class DetailView extends React.Component {
 const queryOptions = {
     options: props => ({
         variables: {
-            id: props.match.params.id,
-        },
-    }),
+            id: props.match.params.id
+        }
+    })
 }
 
-DetailView = graphql(query,queryOptions)(DetailView)
+DetailView = graphql(query, queryOptions)(DetailView)
 
 export default DetailView
