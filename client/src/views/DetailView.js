@@ -22,7 +22,6 @@ class DetailView extends React.Component {
                 <p>{data.book.name}</p>
                 <p>{data.book.genre}</p>
                 <Link to={`/`}>Back to homePage</Link>
-                <Link to={`/books/delete/:id`}>Back to homePage</Link>
             </div>
         )
     }
