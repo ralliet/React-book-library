@@ -2,26 +2,36 @@
   "books": [
     {
       "id": "1",
+      "authorId": "1",
       "name": "great book title",
       "genre": "Fantasy"
     },
     {
       "id": "2",
+      "authorId": "2",
       "name": "The final empire",
       "genre": "Fantasy"
     },
     {
       "id": "3",
+      "authorId": "3",
       "name": "return of the king",
       "genre": "Fantasy"
     },
     {
       "name": "shades of grey",
       "genre": "roman",
-      "id": "rRkPEur"
+      "id": "rRkPEur",
+      "authorId": "3"
+    },
+    {
+      "name": "shades of grey",
+      "genre": "roman",
+      "id": "pkAHa0i",
+      "authorId": "3"
     }
   ],
-  "author": [
+  "authors": [
     {
       "id": "1",
       "name": "Patrick",

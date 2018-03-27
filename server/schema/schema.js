@@ -20,7 +20,15 @@ const bookType = new GraphQLObjectType ({
     fields: () => ({
         id: { type: GraphQLID },
         name: { type: GraphQLString },
-        genre: { type: GraphQLString }
+        genre: { type: GraphQLString },
+        author: {
+            type: authorType,
+            //grab the data
+            resolve(parent,args) {
+                return axios.get('http://localhost:3000/authors/'+ parent.authorId)
+                .then(res => res.data);
+            }   
+        }
     })  
 })
 
@@ -57,7 +65,7 @@ const rootQuery = new GraphQLObjectType ({
             type: authorType,
             args: { id: { type: GraphQLID }},
             resolve(parent,args) {
-                return axios.get('http://localhost:3000/author/' + args.id)
+                return axios.get('http://localhost:3000/authors/' + args.id)
                             .then(res => res.data);
             }
         }
