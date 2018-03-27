@@ -24,6 +24,14 @@ class DetailView extends React.Component {
     }
 }
 
-DetailView = graphql(query)(DetailView)
+const queryOptions = {
+    options: props => ({
+        variables: {
+            id: props.match.params.id,
+        },
+    }),
+}
+
+DetailView = graphql(query,queryOptions)(DetailView)
 
 export default DetailView
