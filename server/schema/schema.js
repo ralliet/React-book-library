@@ -43,10 +43,9 @@ const authorType = new GraphQLObjectType ({
             //grab the data
             resolve(parent,args) {
                 return axios.get('http://localhost:3000/books/')
-                            .filter((book) => {
-                                if(authorId === parent.id) return book;
-                            })
-                            .then(res => res.data);
+                            .then((res) => {
+                                return res.data.filter((book) => { return (book.authorId === parent.id) });
+                            });
             }   
         } 
     })
