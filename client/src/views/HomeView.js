@@ -6,7 +6,6 @@ const query = gql `{
     books {
         id
         name
-
     }
 }`;
 
@@ -14,12 +13,10 @@ class HomeView extends React.Component {
     render() {
         let {data} = this.props;
         if (data.loading) return <div>loading...</div>;
-        console.log(data);
+
         return (
             <div>
-                {data
-                    .books
-                    .map((item, index) => (
+                {data.books.map((item) => (
                         <p key={item.id}>
                             <Link to={`/books/${item.id}/`}>
                                 {item.name}

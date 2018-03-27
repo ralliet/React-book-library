@@ -1,8 +1,29 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+import {gql, graphql} from 'react-apollo';
 
+const query = gql `
+    query DetailView($id: ID!) {
+        book(id: $id) {
+          id
+          name
+        }
+      }
+      `;
 
-export default class DetailView extends React.Component {
+class DetailView extends React.Component {
     render() {
-        return <div>Detail</div>
+        let {data} = this.props;
+        if (data.loading) 
+            return <div>loading...</div>;
+        return (
+            <div>
+                <p>{data.book.name}</p>
+            </div>
+        )
     }
 }
+
+DetailView = graphql(query)(DetailView)
+
+export default DetailView
