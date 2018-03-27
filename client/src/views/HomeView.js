@@ -1,8 +1,36 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import {gql, graphql} from 'react-apollo';
 
+const query = gql `{
+    books {
+        id
+        name
 
-export default class HomeView extends React.Component {
+    }
+}`;
+
+class HomeView extends React.Component {
     render() {
-        return <div>Home</div>
+        let {data} = this.props;
+        if (data.loading) return <div>loading...</div>;
+        console.log(data);
+        return (
+            <div>
+                {data
+                    .books
+                    .map((item, index) => (
+                        <p key={item.id}>
+                            <Link to={`/books/${item.id}/`}>
+                                {item.name}
+                            </Link>
+                        </p>
+                    ))}
+            </div>
+        )
     }
 }
+
+HomeView = graphql(query)(HomeView)
+
+export default HomeView
