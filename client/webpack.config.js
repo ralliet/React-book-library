@@ -2,8 +2,7 @@ const webpack = require('webpack');
 
 module.exports = {
     entry: [
-        'react-hot-loader/patch',
-        './src/index.js'
+        'react-hot-loader/patch', './src/index.js'
     ],
     module: {
         rules: [
@@ -13,6 +12,11 @@ module.exports = {
                 use: {
                     loader: 'babel-loader'
                 }
+            }, 
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: ['babel-loader','eslint-loader']
             }
         ]
     },
@@ -24,9 +28,7 @@ module.exports = {
         publicPath: '/',
         filename: 'bundle.js'
     },
-    plugins: [
-        new webpack.HotModuleReplacementPlugin()
-      ],
+    plugins: [new webpack.HotModuleReplacementPlugin()],
     devServer: {
         contentBase: './dist',
         hot: true
