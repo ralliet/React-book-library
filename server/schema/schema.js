@@ -37,7 +37,18 @@ const authorType = new GraphQLObjectType ({
     fields: () => ({
         id: { type: GraphQLID },
         name: { type: GraphQLString },
-        age: { type: GraphQLInt }
+        age: { type: GraphQLInt },
+        books: {
+            type: new GraphQLList(bookType),
+            //grab the data
+            resolve(parent,args) {
+                return axios.get('http://localhost:3000/books/')
+                            .filter((book) => {
+                                if(authorId === parent.id) return book;
+                            })
+                            .then(res => res.data);
+            }   
+        } 
     })
 });
 
