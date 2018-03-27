@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {gql, graphql} from 'react-apollo';
 
 const query = gql `
@@ -20,7 +21,8 @@ class DetailView extends React.Component {
             <div>
                 <p>{data.book.name}</p>
                 <p>{data.book.genre}</p>
-
+                <Link to={`/`}>Back to homePage</Link>
+                <Link to={`/books/delete/:id`}>Back to homePage</Link>
             </div>
         )
     }

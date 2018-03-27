@@ -2,8 +2,8 @@ import React from 'react'
 import { gql, graphql } from 'react-apollo'
 
 const mutation = gql`
-mutation CreateView($name: String!, $genre: String!) {
-  addBook(name: $name, genre: $genre) {
+mutation DeleteView($id: ID!) {
+  deleteBook(id: $id) {
     id
     name
     genre
