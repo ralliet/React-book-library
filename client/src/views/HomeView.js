@@ -8,6 +8,8 @@ import Footer from '../components/Footer';
 import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
+import { CircularProgress } from 'material-ui/Progress';
+
 
 
 const query = gql `{
@@ -27,7 +29,7 @@ class HomeView extends React.Component {
     render() {
         let {data} = this.props;
         if (data.loading) 
-            return <div>loading...</div>;
+    return(<Grid container><CircularProgress /></Grid>);
         
         return (
             <div>
