@@ -1,10 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {gql, graphql} from 'react-apollo';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import Grid from 'material-ui/Grid';
 
+//material UI imports
+import Grid from 'material-ui/Grid';
+import Paper from 'material-ui/Paper';
 
 const query = gql `{
     books {
@@ -13,33 +15,42 @@ const query = gql `{
     }
 }`;
 
+const styles = {
+    padding: 20,
+    marginTop: 10,
+    marginBottom: 10 
+};
+
 class HomeView extends React.Component {
     render() {
         let {data} = this.props;
-        if (data.loading) return <div>loading...</div>;
-
+        if (data.loading) 
+            return <div>loading...</div>;
+        
         return (
             <div>
                 <Header/>
-                <Grid container >
+                <Grid container>
                     <Grid item sm>
-                        Books:
-                        {data.books.map((item) => (
-                        <p key={item.id}>
-                            <Link to={`/books/${item.id}/`}>
-                                {item.name}
-                            </Link>
-                        </p>
-                        ))}
+                        <Paper style={styles}>
+                            Books: {data
+                                .books
+                                .map((item) => (
+                                    <p key={item.id}>
+                                        <Link to={`/books/${item.id}/`}>
+                                            {item.name}
+                                        </Link>
+                                    </p>
+                                ))}
+                        </Paper>
                     </Grid>
                     <Grid item sm>
-                        right pane
-                    </Grid>
-                    <Grid item sm>
-                        right pane
+                        <Paper style={styles}>
+                            right pane
+                        </Paper>
                     </Grid>
                 </Grid>
-                
+
                 <Footer/>
             </div>
         )
