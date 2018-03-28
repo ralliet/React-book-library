@@ -9,7 +9,7 @@ class Header extends React.Component {
             <AppBar position="static">
                 <Toolbar>
                     <Typography variant="title" color="inherit" >
-                        Title
+                        Book store app
                     </Typography>
                 </Toolbar>
             </AppBar>
