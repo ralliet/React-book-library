@@ -7,6 +7,8 @@ import Footer from '../components/Footer';
 //material UI imports
 import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
+import Typography from 'material-ui/Typography';
+
 
 const query = gql `{
     books {
@@ -18,7 +20,7 @@ const query = gql `{
 const styles = {
     padding: 20,
     marginTop: 10,
-    marginBottom: 10 
+    marginBottom: 10
 };
 
 class HomeView extends React.Component {
@@ -33,15 +35,17 @@ class HomeView extends React.Component {
                 <Grid container>
                     <Grid item sm>
                         <Paper style={styles}>
-                            Books: {data
-                                .books
-                                .map((item) => (
-                                    <p key={item.id}>
-                                        <Link to={`/books/${item.id}/`}>
-                                            {item.name}
-                                        </Link>
-                                    </p>
-                                ))}
+                            <Typography variant="body2" gutterBottom>
+                                Books: {data
+                                    .books
+                                    .map((item) => (
+                                        <p key={item.id}>
+                                            <Link to={`/books/${item.id}/`}>
+                                                {item.name}
+                                            </Link>
+                                        </p>
+                                    ))}
+                            </Typography>
                         </Paper>
                     </Grid>
                     <Grid item sm>
