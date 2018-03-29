@@ -23,7 +23,6 @@ const client = new ApolloClient({
 
 class App extends Component {
   render() {
-    console.log(typeof process.env.GRAPHQL_ENDPOINT);
     return (
       <ApolloProvider client={client}>
         <BrowserRouter>
