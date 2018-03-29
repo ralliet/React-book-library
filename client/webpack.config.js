@@ -27,7 +27,12 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({template: './src/index.html'}),
-    new webpack.EnvironmentPlugin( { ...process.env } )
+    new webpack.DefinePlugin({
+      'process.env': {
+        'GRAPHQL_ENDPOINT': JSON.stringify(process.env.GRAPHQL_ENDPOINT)
+      }
+    })
+
   ]
   ,node: {
     fs: 'empty'
