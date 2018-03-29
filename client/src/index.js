@@ -1,3 +1,6 @@
+//ENV VARIABLES
+require('dotenv').config();
+
 //REACT
 import React, {Component} from 'react'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
@@ -8,17 +11,19 @@ import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { ApolloProvider } from 'react-apollo';
 //VIEWS
-import HomeView from './views/HomeView'
+import HomeView  from './views/HomeView'
 import CreateView from './views/CreateView'
 import DetailView from './views/DetailView'
 
+
 const client = new ApolloClient({
-  link: new HttpLink({ uri: 'http://localhost:4000/graphql' }),
+  link: new HttpLink({ uri: process.env.GRAPHQL_ENDPOINT }),
   cache: new InMemoryCache().restore(window.__APOLLO_STATE__)
 });
 
 class App extends Component {
   render() {
+    console.log(typeof process.env.GRAPHQL_ENDPOINT);
     return (
       <ApolloProvider client={client}>
         <BrowserRouter>
