@@ -1,6 +1,10 @@
 import React from 'react'
 import { gql, graphql } from 'react-apollo'
 
+//component imports
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+
 const mutation = gql`
 mutation CreateView($name: String!, $genre: String!) {
   addBook(name: $name, genre: $genre) {
@@ -28,6 +32,7 @@ class CreateView extends React.Component {
   render() {
     return (
       <div>
+        <Header/>
         <h1>Create new Book</h1>
         <form
           ref={ref => (this.form = ref)}
@@ -43,6 +48,7 @@ class CreateView extends React.Component {
           </div>
           <button type="submit">Submit</button>
         </form>
+        <Footer/>
       </div>
     )
   }

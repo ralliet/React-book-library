@@ -1,16 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {gql, graphql} from 'react-apollo';
 
-const query = gql `
-    query DetailView($id: ID!) {
-        book(id: $id) {
-          id
-          name
-          genre
-        }
-      }
-      `;
+//component imports
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+
+//Graphql query imports
+import { getBookByID } from '../graphql/Books.graphql';
 
 class DetailView extends React.Component {
     render() {
@@ -19,9 +16,13 @@ class DetailView extends React.Component {
             return <div>loading...</div>;
         return (
             <div>
-                <p>{data.book.name}</p>
-                <p>{data.book.genre}</p>
-                <Link to={`/`}>Back to homePage</Link>
+                <Header/>
+                <div>
+                    <p>{data.book.name}</p>
+                    <p>{data.book.genre}</p>
+                    <Link to={`/`}>Back to homePage</Link>
+                </div>
+                <Footer/>
             </div>
         )
     }
@@ -35,6 +36,6 @@ const queryOptions = {
     })
 }
 
-DetailView = graphql(query, queryOptions)(DetailView)
+DetailView = graphql(getBookByID, queryOptions)(DetailView)
 
 export default DetailView

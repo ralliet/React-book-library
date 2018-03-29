@@ -1,6 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {gql, graphql} from 'react-apollo';
+
+//component imports
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -8,16 +10,13 @@ import Footer from '../components/Footer';
 import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
-import { CircularProgress } from 'material-ui/Progress';
+import {CircularProgress} from 'material-ui/Progress';
+import ExpansionPanel, {ExpansionPanelSummary, ExpansionPanelDetails} from 'material-ui/ExpansionPanel';
+import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
 
+//Graphql query imports
+import { getAllbooks } from '../graphql/Books.graphql';
 
-
-const query = gql `{
-    books {
-        id
-        name
-    }
-}`;
 
 const styles = {
     padding: 20,
@@ -29,31 +28,35 @@ class HomeView extends React.Component {
     render() {
         let {data} = this.props;
         if (data.loading) 
-    return(<Grid container><CircularProgress /></Grid>);
+            return (
+                <Grid container><CircularProgress/></Grid>
+            );
         
         return (
             <div>
                 <Header/>
                 <Grid container>
-                    <Grid item sm>
-                        <Paper style={styles}>
-                            <Typography variant="body2" gutterBottom>
-                                Books: {data
-                                    .books
-                                    .map((item) => (
-                                        <p key={item.id}>
-                                            <Link to={`/books/${item.id}/`}>
-                                                {item.name}
-                                            </Link>
-                                        </p>
-                                    ))}
-                            </Typography>
-                        </Paper>
-                    </Grid>
-                    <Grid item sm>
-                        <Paper style={styles}>
-                            right pane
-                        </Paper>
+                    <Grid item>
+                        Books: {data
+                            .books
+                            .map((item) => (
+                   
+
+                                    <ExpansionPanel key={item.id}>
+                                        <ExpansionPanelSummary expandIcon={< ExpandMoreIcon />}>
+                                            <Typography >
+                                                <Link to={`/books/${item.id}/`}>
+                                                    {item.name}
+                                                </Link>
+                                            </Typography>
+                                        </ExpansionPanelSummary>
+                                        <ExpansionPanelDetails>
+                                            <Typography></Typography>
+                                        </ExpansionPanelDetails>
+                                    </ExpansionPanel>
+                     
+                            ))}
+
                     </Grid>
                 </Grid>
 
@@ -63,6 +66,6 @@ class HomeView extends React.Component {
     }
 }
 
-HomeView = graphql(query)(HomeView)
+HomeView = graphql(getAllbooks)(HomeView)
 
 export default HomeView
