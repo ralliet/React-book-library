@@ -6,6 +6,7 @@ import {gql, graphql} from 'react-apollo';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
+
 //material UI imports
 import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
@@ -35,9 +36,11 @@ class HomeView extends React.Component {
         return (
             <div>
                 <Header/>
-                <Grid container>
-                    <Grid item>
-                        Books: {data
+                <Grid container spacing={24}>
+
+                    <Grid item xs={12}>
+
+ {data
                             .books
                             .map((item) => (
                    
@@ -58,7 +61,9 @@ class HomeView extends React.Component {
                             ))}
 
                     </Grid>
+                    
                 </Grid>
+           
 
                 <Footer/>
             </div>
