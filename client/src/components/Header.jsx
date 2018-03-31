@@ -31,9 +31,9 @@ function Header (props) {
               <MenuIcon />
             </IconButton>
             <Typography variant="title" color="inherit" className={classes.flex}>
-              Title
+              Book store app
             </Typography>
-            <Button color="inherit">Login</Button>
+            <Button href={`#/login/`} color="inherit">Login</Button>
           </Toolbar>
         </AppBar>
       </div>

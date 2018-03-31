@@ -3,8 +3,8 @@ import {Link} from 'react-router-dom';
 import {gql, graphql} from 'react-apollo';
 
 //component imports
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Header from '../components/Header.jsx';
+import Footer from '../components/Footer.jsx';
 
 //Graphql query imports
 import {getBookByID} from '../graphql/Books.graphql';

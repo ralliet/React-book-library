@@ -3,9 +3,8 @@ import {Link} from 'react-router-dom';
 import {gql, graphql} from 'react-apollo';
 
 //component imports
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-
+import Header from '../components/Header.jsx';
+import Footer from '../components/Footer.jsx';
 
 //material UI imports
 import Grid from 'material-ui/Grid';
@@ -15,9 +14,9 @@ import {CircularProgress} from 'material-ui/Progress';
 import ExpansionPanel, {ExpansionPanelSummary, ExpansionPanelDetails} from 'material-ui/ExpansionPanel';
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
 
-//Graphql query imports
-import { getAllbooks } from '../graphql/Books.graphql';
 
+//Graphql query imports
+import {getAllbooks} from '../graphql/Books.graphql';
 
 const styles = {
     padding: 20,
@@ -37,31 +36,30 @@ class HomeView extends React.Component {
             <div>
                 <Header/>
                 <Grid container spacing={24}>
+      
 
-                    <Grid item xs={12}> 
-                       {data.books
+                    <Grid item xs={12}>
+                        {data
+                            .books
                             .map((item) => (
-                   
+                                <ExpansionPanel key={item.id}>
+                                    <ExpansionPanelSummary expandIcon={< ExpandMoreIcon />}>
+                                        <Typography >
+                                            <Link to={`/books/${item.id}/`}>
+                                                {item.name}
+                                            </Link>
+                                        </Typography>
+                                    </ExpansionPanelSummary>
+                                    <ExpansionPanelDetails>
+                                        <Typography></Typography>
+                                    </ExpansionPanelDetails>
+                                </ExpansionPanel>
 
-                                    <ExpansionPanel key={item.id}>
-                                        <ExpansionPanelSummary expandIcon={< ExpandMoreIcon />}>
-                                            <Typography >
-                                                <Link to={`/books/${item.id}/`}>
-                                                    {item.name}
-                                                </Link>
-                                            </Typography>
-                                        </ExpansionPanelSummary>
-                                        <ExpansionPanelDetails>
-                                            <Typography></Typography>
-                                        </ExpansionPanelDetails>
-                                    </ExpansionPanel>
-                     
                             ))}
 
                     </Grid>
-                    
+
                 </Grid>
-           
 
                 <Footer/>
             </div>

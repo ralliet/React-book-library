@@ -11,11 +11,11 @@ import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { ApolloProvider } from 'react-apollo';
 //VIEWS
-import HomeView  from './views/HomeView'
-import CreateView from './views/CreateView'
-import DetailView from './views/DetailView'
-import LoginView from './views/LoginView'
-import SignUpView from './views/SignUpView'
+import HomeView  from './views/HomeView.jsx'
+import CreateView from './views/CreateView.jsx'
+import DetailView from './views/DetailView.jsx'
+import LoginView from './views/LoginView.jsx'
+import SignUpView from './views/SignUpView.jsx'
 
 
 const client = new ApolloClient({
