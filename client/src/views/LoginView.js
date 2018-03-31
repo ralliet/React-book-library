@@ -23,7 +23,7 @@ class LoginView extends React.Component {
         return (
             <div>
                 <Header/>
-                <FormControl className={classNames(classes.margin, classes.textField)}>
+{/*                 <FormControl className={classNames(classes.margin, classes.textField)}>
                     <InputLabel htmlFor="adornment-password">Password</InputLabel>
                     <Input
                         id="adornment-password"
@@ -41,7 +41,7 @@ class LoginView extends React.Component {
                             : <Visibility/>}
                     </IconButton> 
                     </InputAdornment>}/>
-                </FormControl>
+                </FormControl> */}
 
                 <Footer/>
             </div>

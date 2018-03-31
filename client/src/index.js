@@ -3,7 +3,7 @@ require('dotenv').config();
 
 //REACT
 import React, {Component} from 'react'
-import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import {HashRouter, Route, Switch } from 'react-router-dom'
 import ReactDOM from 'react-dom'
 //APOLLO
 import ApolloClient from 'apollo-client';
@@ -28,17 +28,17 @@ class App extends Component {
     console.log(process.env);
     return (
       <ApolloProvider client={client}>
-        <BrowserRouter>
+        <HashRouter>
           <div>
             <Route exact path="/" component={HomeView} />
             <Switch>
-              <Route exact path="/login/" component={LoginView} />
-              <Route exact path="/signup/" component={SignUpView} />
-              <Route exact path="/books/create/" component={CreateView} />
-              <Route exact path="/books/:id/" component={DetailView} />
+              <Route path="/login/" component={LoginView} />
+              <Route path="/signup/" component={SignUpView} />
+              <Route path="/books/create/" component={CreateView} />
+              <Route path="/books/:id/" component={DetailView} />
             </Switch>
           </div>
-        </BrowserRouter>
+        </HashRouter>
       </ApolloProvider>
     )
   }
