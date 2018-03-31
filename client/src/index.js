@@ -14,6 +14,8 @@ import { ApolloProvider } from 'react-apollo';
 import HomeView  from './views/HomeView'
 import CreateView from './views/CreateView'
 import DetailView from './views/DetailView'
+import LoginView from './views/LoginView'
+import SignUpView from './views/SignUpView'
 
 
 const client = new ApolloClient({
@@ -30,6 +32,8 @@ class App extends Component {
           <div>
             <Route exact path="/" component={HomeView} />
             <Switch>
+              <Route exact path="/login/" component={LoginView} />
+              <Route exact path="/signup/" component={SignUpView} />
               <Route exact path="/books/create/" component={CreateView} />
               <Route exact path="/books/:id/" component={DetailView} />
             </Switch>

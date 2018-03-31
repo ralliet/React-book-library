@@ -1,6 +1,8 @@
 const graphql = require("graphql");
 const axios = require("axios");
-const { authorType,bookType } = require("../types/types");
+const { authorType,bookType,userType } = require("../types/types");
+const _ = require('lodash');
+
 
 const { 
     GraphQLObjectType,
@@ -58,7 +60,7 @@ const mutation = new GraphQLObjectType({
                 password: {type: GraphQLString }
             },
             resolve(parent,args) {
-                return axios.get('http://localhost:3000/users/' + args.id, args)
+                return axios.get('http://localhost:3000/users/')
                 .then(res => res.data);
             }
         },
@@ -69,7 +71,7 @@ const mutation = new GraphQLObjectType({
                 password: {type: GraphQLString }
             },
             resolve(parent,args) {
-                return axios.get('http://localhost:3000/users/' + args.id, args)
+                return axios.get('http://localhost:3000/users/')
                 .then(res => res.data);
             }
         }
