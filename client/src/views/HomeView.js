@@ -38,10 +38,8 @@ class HomeView extends React.Component {
                 <Header/>
                 <Grid container spacing={24}>
 
-                    <Grid item xs={12}>
-
- {data
-                            .books
+                    <Grid item xs={12}> 
+                       {data.books
                             .map((item) => (
                    
 
