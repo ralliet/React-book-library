@@ -14,12 +14,12 @@ import {FormControl, FormHelperText} from 'material-ui/Form';
 
 class LoginView extends React.Component {
     render() {
-        let {data} = this.props;
+      /*   let {data} = this.props;
         if (data.loading) 
             return (
                 <Grid container><CircularProgress/></Grid>
             );
-        
+         */
         return (
             <div>
                 <Header/>

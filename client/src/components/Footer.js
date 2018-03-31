@@ -8,11 +8,11 @@ class Footer extends React.Component {
 
     return (
       <Paper>
-        <Tabs value={0} indicatorColor="primary" textColor="primary" centered>
+        {/* <Tabs value={0} indicatorColor="primary" textColor="primary" centered>
           <Tab label="Item One"/>
           <Tab label="Item Two"/>
           <Tab label="Item Three"/>
-        </Tabs>
+        </Tabs> */}
       </Paper>
     )
   }
