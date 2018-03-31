@@ -47,5 +47,17 @@
       "name": "Molly",
       "age": 48
     }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "email": "admin",
+      "name": "admin"
+    },
+    {
+      "id": "2",
+      "email": "ruben",
+      "name": "Azerty123"
+    }
   ]
 }

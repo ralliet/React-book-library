@@ -50,6 +50,28 @@ const mutation = new GraphQLObjectType({
                 return axios.patch('http://localhost:3000/books/' + args.id, args)
                 .then(res => res.data);
             }
+        },
+        login: {
+            type: userType,
+            args: {
+                email:  {type: GraphQLString },
+                password: {type: GraphQLString }
+            },
+            resolve(parent,args) {
+                return axios.get('http://localhost:3000/users/' + args.id, args)
+                .then(res => res.data);
+            }
+        },
+        signup: {
+            type: userType,
+            args: {
+                email:  {type: GraphQLString },
+                password: {type: GraphQLString }
+            },
+            resolve(parent,args) {
+                return axios.get('http://localhost:3000/users/' + args.id, args)
+                .then(res => res.data);
+            }
         }
     }
 })

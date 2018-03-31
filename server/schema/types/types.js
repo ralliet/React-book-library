@@ -10,6 +10,14 @@ const {
     GraphQLNonNull
 } = graphql;
 
+const userType= new GraphQLObjectType ({
+    name: 'User',
+    fields:() => ({
+        _id: { type: GraphQLID },
+        email: { type: GraphQLString }
+    })
+});
+
 //AuthorType
 const authorType = new GraphQLObjectType ({
     name: 'Author',
@@ -50,5 +58,6 @@ const bookType = new GraphQLObjectType ({
 
 module.exports = {
     authorType,
-    bookType
+    bookType,
+    userType
 }; 
