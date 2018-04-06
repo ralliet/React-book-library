@@ -6,13 +6,9 @@ import {gql, graphql} from 'react-apollo';
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 
-//material UI imports
-import Grid from 'material-ui/Grid';
-import Paper from 'material-ui/Paper';
-import Typography from 'material-ui/Typography';
-import {CircularProgress} from 'material-ui/Progress';
-import ExpansionPanel, {ExpansionPanelSummary, ExpansionPanelDetails} from 'material-ui/ExpansionPanel';
-import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
+//semantic UI imports
+import { List } from 'semantic-ui-react'
+
 
 
 //Graphql query imports
@@ -29,22 +25,20 @@ class HomeView extends React.Component {
         let {data} = this.props;
         if (data.loading) 
             return (
-                <Grid container><CircularProgress/></Grid>
-            );
+                <h1>Loading</h1>
+            ); 
         
         return (
             <div>
                 <Header/>
                 <div id="container">
-                    <ul id="booklist">
+                    <List id="booklist">
                         {data
                             .books
                             .map((item) => (
-                                <li key={item.id}>
-                                    <Link to={`/books/${item.id}/`}>{item.name}</Link>
-                                </li>
+                                <List.Item key={item.id}><Link to={`/books/${item.id}/`}>{item.name}</Link></List.Item>
                         ))}
-                    </ul>
+                    </List>
                 </div>
                 <Footer/>
             </div>
