@@ -35,32 +35,17 @@ class HomeView extends React.Component {
         return (
             <div>
                 <Header/>
-                <Grid container spacing={24}>
-      
-
-                    <Grid item xs={12}>
+                <div id="container">
+                    <ul id="booklist">
                         {data
                             .books
                             .map((item) => (
-                                <ExpansionPanel key={item.id}>
-                                    <ExpansionPanelSummary expandIcon={< ExpandMoreIcon />}>
-                                        <Typography >
-                                            <Link to={`/books/${item.id}/`}>
-                                                {item.name}
-                                            </Link>
-                                        </Typography>
-                                    </ExpansionPanelSummary>
-                                    <ExpansionPanelDetails>
-                                        <Typography></Typography>
-                                    </ExpansionPanelDetails>
-                                </ExpansionPanel>
-
-                            ))}
-
-                    </Grid>
-
-                </Grid>
-
+                                <li key={item.id}>
+                                    <Link to={`/books/${item.id}/`}>{item.name}</Link>
+                                </li>
+                        ))}
+                    </ul>
+                </div>
                 <Footer/>
             </div>
         )

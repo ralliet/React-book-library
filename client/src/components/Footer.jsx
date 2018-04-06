@@ -7,13 +7,9 @@ class Footer extends React.Component {
     const {classes} = this.props;
 
     return (
-      <Paper>
-        {/* <Tabs value={0} indicatorColor="primary" textColor="primary" centered>
-          <Tab label="Item One"/>
-          <Tab label="Item Two"/>
-          <Tab label="Item Three"/>
-        </Tabs> */}
-      </Paper>
+      <div className="container">
+        <p>Footer copyright 2018</p>
+      </div>
     )
   }
 }

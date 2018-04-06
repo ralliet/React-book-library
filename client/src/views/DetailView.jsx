@@ -9,16 +9,6 @@ import Footer from '../components/Footer.jsx';
 //Graphql query imports
 import {getBookByID} from '../graphql/Books.graphql';
 
-//material UI imports
-import Paper from 'material-ui/Paper';
-import Typography from 'material-ui/Typography';
-import Button from 'material-ui/Button';
-
-
-const styles = {
-    paddingTop: 16,
-    paddingBottom: 16
-};
 
 class DetailView extends React.Component {
     render() {
@@ -29,20 +19,11 @@ class DetailView extends React.Component {
         return (
             <div>
                 <Header/>
-                <Paper elevation={4}>
-                    <Typography variant="headline" component="h3">
-                        {data.book.name}
-                    </Typography>
-                    <Typography component="p">
-                        {data.book.genre}
-
-                    </Typography>
-                    <Typography variant="button">
-                        <Button href={`/`} variant="raised" color="primary" >
-                            Back to homePage
-                        </Button>
-                    </Typography>
-                </Paper>
+                <div id="container">
+                    <p>{data.book.name}</p>
+                    <p>{data.book.genre}</p>
+                    <Link to='/'>Back to homePage</Link>
+                </div>
                 <Footer/>
             </div>
         )
