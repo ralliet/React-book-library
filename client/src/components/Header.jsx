@@ -1,19 +1,28 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import {Link} from 'react-router-dom';
+import { Input, Menu } from 'semantic-ui-react'
 
+export default class Header extends Component {
+  state = { activeItem: 'home' }
 
+  handleItemClick = (e, { name }) => {
+    this.setState({ activeItem: name })
+  }
 
-function Header() {
+  render() {
+    const { activeItem } = this.state
 
     return (
-      <div className="container">
-        <h1>Book store app</h1>
-        <Link to={`/login/`}>Login</Link>
-      </div>
-    );
+      <Menu secondary>
+        <Menu.Item name='home' as={ Link } to='/' active={activeItem === 'home'} onClick={this.handleItemClick} />
+        <Menu.Item name='signup' as={ Link } to='signup' active={activeItem === 'messages'} onClick={this.handleItemClick} />
+        <Menu.Menu position='right'>
+          <Menu.Item>
+            <Input icon='search' placeholder='Search...' />
+          </Menu.Item>
+          <Menu.Item name='login' as={ Link } to='login' active={activeItem === 'login'} onClick={this.handleItemClick} />
+        </Menu.Menu>
+      </Menu>
+    )
+  }
 }
-
-
-
-export default Header;
-
