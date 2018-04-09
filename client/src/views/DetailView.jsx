@@ -9,6 +9,9 @@ import Footer from '../components/Footer.jsx';
 //Graphql query imports
 import {getBookByID} from '../graphql/Books.graphql';
 
+//Semantic UI imports
+import { Button } from 'semantic-ui-react'
+
 
 class DetailView extends React.Component {
     render() {
@@ -23,6 +26,7 @@ class DetailView extends React.Component {
                     <p>{data.book.name}</p>
                     <p>{data.book.genre}</p>
                     <Link to='/'>Back to homePage</Link>
+                    <Button negative>Remove book</Button>
                 </div>
                 <Footer/>
             </div>
