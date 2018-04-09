@@ -5,29 +5,23 @@ import {gql, graphql} from 'react-apollo';
 //component imports
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
+import Loading from '../components/Loading.jsx';
 
 //semantic UI imports
 import { List } from 'semantic-ui-react'
 
-
-
 //Graphql query imports
 import {getAllbooks} from '../graphql/Books.graphql';
 
-const styles = {
-    padding: 20,
-    marginTop: 10,
-    marginBottom: 10
-};
+
 
 class HomeView extends React.Component {
     render() {
         let {data} = this.props;
-        if (data.loading) 
-            return (
-                <h1>Loading</h1>
-            ); 
-        
+        if (data.loading) {
+            return (<Loading/>);
+        }
+                   
         return (
             <div>
                 <Header/>
