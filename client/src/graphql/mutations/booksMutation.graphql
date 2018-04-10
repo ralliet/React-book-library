@@ -1,0 +1,15 @@
+mutation deleteBookById($id: String!) {
+  deleteBook(id: $id) {
+    id
+    name
+    genre
+  }
+}
+
+mutation addBook($name: String!, $genre: String!) {
+  addBook(name: $name, genre: $genre) {
+    id
+    name
+    genre
+  }
+}
