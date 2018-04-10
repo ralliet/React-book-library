@@ -8,11 +8,10 @@ import Footer from '../components/Footer.jsx';
 import Loading from '../components/Loading.jsx';
 
 //semantic UI imports
-import { List } from 'semantic-ui-react'
+import { List,Grid } from 'semantic-ui-react'
 
 //Graphql query imports
-import {getAllbooks} from '../graphql/Books.graphql';
-
+import {getAllbooks} from '../graphql/queries/Books.graphql';
 
 
 class HomeView extends React.Component {
@@ -25,15 +24,17 @@ class HomeView extends React.Component {
         return (
             <div>
                 <Header/>
-                <div id="container">
-                    <List id="booklist">
-                        {data
-                            .books
-                            .map((item) => (
-                                <List.Item key={item.id}><Link to={`/books/${item.id}/`}>{item.name}</Link></List.Item>
-                        ))}
-                    </List>
-                </div>
+                <Grid columns={2}>
+                    <Grid.Column>
+                        <List id="booklist">
+                            {data
+                                .books
+                                .map((item) => (
+                                    <List.Item key={item.id}><Link to={`/books/${item.id}/`}>{item.name}</Link></List.Item>
+                            ))}
+                        </List>
+                    </Grid.Column>
+                </Grid>
                 <Footer/>
             </div>
         )
