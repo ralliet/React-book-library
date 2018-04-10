@@ -15,12 +15,13 @@ export default class Header extends Component {
     return (
       <Menu secondary>
         <Menu.Item name='home' as={ Link } to='/' active={activeItem === 'home'} onClick={this.handleItemClick} />
-        <Menu.Item name='signup' as={ Link } to='signup' active={activeItem === 'messages'} onClick={this.handleItemClick} />
+        <Menu.Item name='createbook' as={ Link } to='/books/create/' active={activeItem === 'createBook'} onClick={this.handleItemClick} />
+        <Menu.Item name='signup' as={ Link } to='/signup' active={activeItem === 'messages'} onClick={this.handleItemClick} />
         <Menu.Menu position='right'>
           <Menu.Item>
             <Input icon='search' placeholder='Search...' />
           </Menu.Item>
-          <Menu.Item name='login' as={ Link } to='login' active={activeItem === 'login'} onClick={this.handleItemClick} />
+          <Menu.Item name='login' as={ Link } to='/login' active={activeItem === 'login'} onClick={this.handleItemClick} />
         </Menu.Menu>
       </Menu>
     )
