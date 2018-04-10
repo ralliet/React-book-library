@@ -12,12 +12,11 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import { ApolloProvider } from 'react-apollo';
 //VIEWS
 import HomeView  from './views/HomeView.jsx'
-import CreateView from './views/CreateView.jsx'
+import CreateBookView from './views/CreateBookView.jsx'
+import UpdateBookView from './views/UpdateBookView.jsx'
 import DetailView from './views/DetailView.jsx'
 import LoginView from './views/LoginView.jsx'
 import SignUpView from './views/SignUpView.jsx'
-
-
 
 
 const client = new ApolloClient({
@@ -36,7 +35,8 @@ class App extends Component {
             <Switch>
               <Route path="/login/" component={LoginView} />
               <Route path="/signup/" component={SignUpView} />
-              <Route path="/books/create/" component={CreateView} />
+              <Route path="/books/create/" component={CreateBookView} />
+              <Route path="/books/update/:id" component={UpdateBookView} />
               <Route path="/books/:id/" component={DetailView} />
             </Switch>
           </div>
